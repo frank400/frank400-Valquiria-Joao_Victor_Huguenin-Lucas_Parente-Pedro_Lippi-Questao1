@@ -28,7 +28,30 @@ int main()
         
     }
     else
-    {
+    {   
+        int x[30],y[30];
+        int count = 0;
+        while (true )
+        {
+          scanf("%d %d",&x[count],&y[count]);
+          if(x[count] == -1 && y[count] == -1){
+              break;
+          }
+          count++;  
+        }
+        
+        for(int i = 0; i<30 ; i++){
+            for(int j = 0; j<30; j++){
+                for(int cont = 0; cont<30; cont++){
+                    if(x[cont] == i && y[cont] == j){
+                        quadro[i][j].is_alive = true;
+                    }else{
+                        quadro[i][j].is_alive = false;
+                    }
+                }
+               
+            }
+        }
         
     }
     
