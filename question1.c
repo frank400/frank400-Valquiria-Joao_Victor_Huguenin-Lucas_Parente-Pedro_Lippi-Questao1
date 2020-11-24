@@ -6,6 +6,18 @@
 struct Celula {
     bool is_alive;
 };
+void delay(int number_of_seconds) 
+{ 
+    // Converting time into milli_seconds 
+    int milli_seconds = 1000 * number_of_seconds; 
+  
+    // Storing start time 
+    clock_t start_time = clock(); 
+  
+    // looping till required time is not achieved 
+    while (clock() < start_time + milli_seconds) 
+        ; 
+}
 
 void clear(){
     // funcao para limpar a tela para ambos sistemas operacionais.
@@ -25,6 +37,15 @@ int main()
     scanf("%d",&opcao);
     if (opcao == 1)
     {
+        for (int i = 0; i < 30; i++)
+        {
+            for (int j = 0; j < 30; j++)
+            {
+                quadro[i][j].is_alive=false;
+            }
+            
+        }
+        
         int number_of_cells= rand()%900;
         for (int i = 0; i < number_of_cells; i++)
         {
@@ -37,6 +58,12 @@ int main()
     else
     {   
         int x[30],y[30];
+        for (int i = 0; i < 30; i++)
+        {
+            x[i]=0;
+            y[i]=0;
+        }
+        
         int count = 0;
         while (true )
         {
@@ -61,6 +88,28 @@ int main()
         }
         
     }
+    while (true)
+    {
+        for (int i = 0; i < 30; i++){
+            for (int j = 0; j < 30; j++)
+            {
+                if (quadro[i][j].is_alive==true)
+                {
+                    printf("O");
+                }
+                else
+                {
+                    printf(" ");
+                }            
+            }
+            printf("\n");
+            
+        }
+        delay(1);
+        clear();
+    }
+    
+    
     
     
     return 0;
