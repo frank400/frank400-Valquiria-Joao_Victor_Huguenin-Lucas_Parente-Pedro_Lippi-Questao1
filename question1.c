@@ -20,6 +20,18 @@ void clear(){
 int main()
 {    
     struct Celula quadro[30][30];
+    printf("Digite sua opção de inicialização do quadro:\n1-Inicialização Randômica\n2-Define celulas vivas\n");
+    int opcao;
+    scanf("%d",&opcao);
+    if (opcao == 1)
+    {
+        
+    }
+    else
+    {
+        
+    }
+    
     
     return 0;
 }
