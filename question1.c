@@ -25,6 +25,13 @@ int main()
     scanf("%d",&opcao);
     if (opcao == 1)
     {
+        int number_of_cells= rand()%900;
+        for (int i = 0; i < number_of_cells; i++)
+        {
+            int x = rand()%30;
+            int y = rand()%30;
+            quadro[x][y].is_alive=true;
+        }
         
     }
     else
