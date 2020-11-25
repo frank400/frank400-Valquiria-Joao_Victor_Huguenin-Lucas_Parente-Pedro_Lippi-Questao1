@@ -6,6 +6,16 @@
 struct Celula {
     bool is_alive;
 };
+void fill_morto(int colunas,int linhas, struct Celula* quadro){
+    for (int i = 0; i < colunas; i++)
+    {
+        for (int j = 0; j < linhas; j++)
+        {
+            quadro[i*colunas +j].is_alive=false;
+        }
+    }
+    
+}
 void delay(int number_of_seconds) 
 { 
     // Converting time into milli_seconds 
@@ -60,8 +70,8 @@ int main()
         int x[30],y[30];
         for (int i = 0; i < 30; i++)
         {
-            x[i]=0;
-            y[i]=0;
+            x[i]=-4;
+            y[i]=-4;
         }
         
         int count = 0;
@@ -73,14 +83,12 @@ int main()
           }
           count++;  
         }
-        
+        fill_morto(30,30,*quadro);
         for(int i = 0; i<30 ; i++){
             for(int j = 0; j<30; j++){
                 for(int cont = 0; cont<30; cont++){
                     if(x[cont] == i && y[cont] == j){
                         quadro[i][j].is_alive = true;
-                    }else{
-                        quadro[i][j].is_alive = false;
                     }
                 }
                
@@ -106,7 +114,7 @@ int main()
             
         }
         delay(1);
-        clear();
+        //clear();
     }
     
     
