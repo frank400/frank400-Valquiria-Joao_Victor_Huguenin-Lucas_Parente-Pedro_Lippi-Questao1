@@ -14,6 +14,7 @@ void fill_morto(int colunas,int linhas, struct Celula* quadro){
         {
             quadro[i*colunas +j].is_alive=false;
         }
+        printf("\n");
     }
     
 }
@@ -108,21 +109,7 @@ int main()
     }
     while (true)
     {
-        for (int i = 0; i < size_quadro; i++){
-            for (int j = 0; j < size_quadro; j++)
-            {
-                if (quadro[i][j].is_alive==true)
-                {
-                    printf("O");
-                }
-                else
-                {
-                    printf(" ");
-                }            
-            }
-            printf("\n");
-            
-        }
+        print_matrix(size_quadro,size_quadro,*quadro);
         delay(1);
         //clear();
     }
