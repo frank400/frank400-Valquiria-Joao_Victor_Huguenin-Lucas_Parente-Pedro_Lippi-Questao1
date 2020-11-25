@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h> 
+#define size_quadro 30
 
 struct Celula {
     bool is_alive;
@@ -15,6 +16,20 @@ void fill_morto(int colunas,int linhas, struct Celula* quadro){
         }
     }
     
+}
+void print_matrix(int colunas,int linhas, struct Celula* quadro){
+    for (int i = 0; i < colunas; i++)
+    {
+        for (int j = 0; j < linhas; j++)
+        {
+            if(quadro[i*colunas +j].is_alive==true) printf("O");
+            else
+            {
+                printf(" ");
+            }
+            
+        }
+    }
 }
 void delay(int number_of_seconds) 
 { 
@@ -41,41 +56,35 @@ void clear(){
 }
 int main()
 {    
-    struct Celula quadro[30][30];
+    struct Celula quadro[size_quadro][size_quadro];
     printf("Digite sua opção de inicialização do quadro:\n1-Inicialização Randômica\n2-Define celulas vivas\n");
     int opcao;
     scanf("%d",&opcao);
     if (opcao == 1)
     {
-        for (int i = 0; i < 30; i++)
-        {
-            for (int j = 0; j < 30; j++)
-            {
-                quadro[i][j].is_alive=false;
-            }
-            
-        }
-        
-        int number_of_cells= rand()%900;
+        fill_morto(size_quadro,size_quadro,*quadro);
+
+        int number_of_cells= rand()%(size_quadro*size_quadro);
         for (int i = 0; i < number_of_cells; i++)
         {
-            int x = rand()%30;
-            int y = rand()%30;
+            int x = rand()%size_quadro;
+            int y = rand()%size_quadro;
             quadro[x][y].is_alive=true;
         }
         
     }
     else
     {   
-        int x[30],y[30];
-        for (int i = 0; i < 30; i++)
+        int x[size_quadro],y[size_quadro];
+        for (int i = 0; i < size_quadro; i++)
         {
             x[i]=-4;
             y[i]=-4;
         }
         
         int count = 0;
-        while (true )
+
+        while (true)
         {
           scanf("%d %d",&x[count],&y[count]);
           if(x[count] == -1 && y[count] == -1){
@@ -83,10 +92,11 @@ int main()
           }
           count++;  
         }
-        fill_morto(30,30,*quadro);
-        for(int i = 0; i<30 ; i++){
-            for(int j = 0; j<30; j++){
-                for(int cont = 0; cont<30; cont++){
+
+        fill_morto(size_quadro,size_quadro,*quadro);
+        for(int i = 0; i<size_quadro ; i++){
+            for(int j = 0; j<size_quadro; j++){
+                for(int cont = 0; cont<size_quadro; cont++){
                     if(x[cont] == i && y[cont] == j){
                         quadro[i][j].is_alive = true;
                     }
@@ -98,8 +108,8 @@ int main()
     }
     while (true)
     {
-        for (int i = 0; i < 30; i++){
-            for (int j = 0; j < 30; j++)
+        for (int i = 0; i < size_quadro; i++){
+            for (int j = 0; j < size_quadro; j++)
             {
                 if (quadro[i][j].is_alive==true)
                 {
