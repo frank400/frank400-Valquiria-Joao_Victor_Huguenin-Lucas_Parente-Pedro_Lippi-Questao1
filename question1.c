@@ -44,6 +44,21 @@ void delay(int number_of_seconds)
     while (clock() < start_time + milli_seconds) 
         ; 
 }
+void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
+    if (quadro[i*size_quadro+j].is_alive=true)
+    {
+        int y = 1+1;
+    }
+    
+    if (*vizinhos<2 || *vizinhos > 3)
+    {
+        quadro[i*size_quadro+j].is_alive=false;
+    }else if(quadro[i*size_quadro+j].is_alive=false && *vizinhos==3)
+    {
+        quadro[i*size_quadro+j].is_alive=true;
+    }
+    *vizinhos=0;
+}
 void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
     for (int i = 0; i < size_quadro; i++)
     {
