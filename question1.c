@@ -249,6 +249,9 @@ int main()
     printf("Digite sua opção de inicialização do quadro:\n1-Inicialização Randômica\n2-Define celulas vivas\n");
     int opcao;
     scanf("%d",&opcao);
+    printf("Digite quantas gerações quer ver:\n");
+    int geracoes;
+    scanf("%d",&geracoes);
     if (opcao == 1)
     {
         fill_morto(size_quadro,size_quadro,*quadro);
@@ -295,10 +298,11 @@ int main()
         }
         
     }
-    while (true)
+    int count_geracoes=0;
+    while (count_geracoes<geracoes)
     {
         print_matrix(size_quadro,size_quadro,*quadro);
-        delay(1);
+        count_geracoes++;
         //clear();
     }
     
