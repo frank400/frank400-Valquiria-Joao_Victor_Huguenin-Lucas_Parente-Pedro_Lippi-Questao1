@@ -14,7 +14,6 @@ void fill_morto(int colunas,int linhas, struct Celula* quadro){
         {
             quadro[i*colunas +j].is_alive=false;
         }
-        printf("\n");
     }
     
 }
@@ -170,7 +169,7 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
                 }
                 aplica_regras(i,j,*quadro,&vizinhos);
             }
-
+            
             
             if (i == size_quadro-1 && j ==size_quadro-1)
             {
@@ -286,6 +285,7 @@ int main()
         }
 
         fill_morto(size_quadro,size_quadro,*quadro);
+
         for(int i = 0; i<size_quadro ; i++){
             for(int j = 0; j<size_quadro; j++){
                 for(int cont = 0; cont<size_quadro; cont++){
@@ -302,10 +302,12 @@ int main()
     while (count_geracoes<geracoes)
     {
         print_matrix(size_quadro,size_quadro,*quadro);
+        still_alive(size_quadro,size_quadro,quadro);
         count_geracoes++;
+
+        delay(10);
         //clear();
-    }
-    
+    } 
     
     
     
