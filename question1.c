@@ -38,11 +38,24 @@ void print_matrix(int colunas,int linhas, struct Celula* quadro){
 }
 void delay(int number_of_seconds) 
 { 
-    // Converting time into milli_seconds 
-    int milli_seconds = 1000 * number_of_seconds; 
+void update_cells(int linhas,int colunas, struct Celula* quadro){
+    for (int i = 0; i < size_quadro; i++)
+    {
+        for (int j = 0; j < size_quadro; j++)
+        {
+            if (quadro[i*size_quadro+j].is_going_to_die)
+            {
+                quadro[i*size_quadro+j].is_alive=false;
+            }else if (quadro[i*size_quadro+j].is_going_to_be_alive)
+            {
+                quadro[i*size_quadro+j].is_alive=true;
+            }
+            quadro[i*colunas +j].is_going_to_die=false;
+            quadro[i*colunas +j].is_going_to_be_alive=false;           
+            
+        }
   
-    // Storing start time 
-    clock_t start_time = clock(); 
+    }
   
     // looping till required time is not achieved 
     while (clock() < start_time + milli_seconds) 
@@ -308,6 +321,7 @@ int main()
     {
         print_matrix(size_quadro,size_quadro,*quadro);
         still_alive(size_quadro,size_quadro,quadro);
+        update_cells(size_quadro,size_quadro,*quadro);
         count_geracoes++;
 
         delay(10);
