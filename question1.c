@@ -30,6 +30,7 @@ void print_matrix(int colunas,int linhas, struct Celula* quadro){
             }
             
         }
+        printf("\n");
     }
 }
 void delay(int number_of_seconds) 
