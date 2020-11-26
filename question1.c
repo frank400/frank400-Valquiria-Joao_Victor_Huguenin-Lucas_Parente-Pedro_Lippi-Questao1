@@ -45,7 +45,7 @@ void delay(int number_of_seconds)
         ; 
 }
 void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
-    if (quadro[i*size_quadro+j].is_alive=true)
+    if (quadro[i*size_quadro+j].is_alive==true)
     {
         int y = 1+1;
     }
@@ -53,7 +53,7 @@ void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
     if (*vizinhos<2 || *vizinhos > 3)
     {
         quadro[i*size_quadro+j].is_alive=false;
-    }else if(quadro[i*size_quadro+j].is_alive=false && *vizinhos==3)
+    }else if(quadro[i*size_quadro+j].is_alive==false && *vizinhos==3)
     {
         quadro[i*size_quadro+j].is_alive=true;
     }
