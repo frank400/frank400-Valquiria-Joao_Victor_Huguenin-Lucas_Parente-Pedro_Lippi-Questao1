@@ -6,6 +6,8 @@
 
 struct Celula {
     bool is_alive;
+    bool is_going_to_die;
+    bool is_going_to_be_alive;
 };
 void fill_morto(int colunas,int linhas, struct Celula* quadro){
     for (int i = 0; i < colunas; i++)
@@ -13,6 +15,8 @@ void fill_morto(int colunas,int linhas, struct Celula* quadro){
         for (int j = 0; j < linhas; j++)
         {
             quadro[i*colunas +j].is_alive=false;
+            quadro[i*colunas +j].is_going_to_die=false;
+            quadro[i*colunas +j].is_going_to_be_alive=false;
         }
     }
     
@@ -52,10 +56,11 @@ void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
     
     if (*vizinhos<2 || *vizinhos > 3)
     {
-        quadro[i*size_quadro+j].is_alive=false;
-    }else if(quadro[i*size_quadro+j].is_alive==false && *vizinhos==3)
+        quadro[i*size_quadro+j].is_going_to_die=true;
+    }
+    else if(quadro[i*size_quadro+j].is_alive==false && *vizinhos==3)
     {
-        quadro[i*size_quadro+j].is_alive=true;
+        quadro[i*size_quadro+j].is_going_to_be_alive=true;
     }
     *vizinhos=0;
 }
@@ -290,7 +295,7 @@ int main()
             for(int j = 0; j<size_quadro; j++){
                 for(int cont = 0; cont<size_quadro; cont++){
                     if(x[cont] == i && y[cont] == j){
-                        quadro[i][j].is_alive = true;
+                        quadro[j][i].is_alive = true;
                     }
                 }
                
