@@ -44,7 +44,179 @@ void delay(int number_of_seconds)
     while (clock() < start_time + milli_seconds) 
         ; 
 }
+void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
+    for (int i = 0; i < size_quadro; i++)
+    {
+        for (int j = 0; j < size_quadro; j++)
+        {   
+            int vizinhos=0;
+            if (j+1<size_quadro && i+1<size_quadro && j-1>=0 && i-1>=0)
+            {
+                //celula acima
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior direita
+                if (quadro[i+1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior esquerda
+                if (quadro[i-1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior direita
+                if (quadro[i+1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior esquerda
+                if (quadro[i-1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                // celula abaixo
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a direita
+                if (quadro[i+1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a esquerda
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
 
+                aplica_regras(i,j,*quadro,&vizinhos);         
+                
+            }
+            if (i==0 && j ==0)
+            {
+                // celula abaixo
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a direita
+                if (quadro[i+1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior direita
+                if (quadro[i+1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                
+
+                aplica_regras(i,j,*quadro,&vizinhos);
+            }else if (i == 0 && i!= size_quadro-1)
+            {
+                // celula abaixo
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a direita
+                if (quadro[i+1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a esquerda
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                aplica_regras(i,j,*quadro,&vizinhos);
+
+            }else if (j==0 && j != size_quadro-1)
+            {
+                //celula acima
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                // celula abaixo
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a direita
+                if (quadro[i+1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                aplica_regras(i,j,*quadro,&vizinhos);
+            }
+
+            
+            if (i == size_quadro-1 && j ==size_quadro-1)
+            {
+                //celula acima
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior esquerda
+                if (quadro[i-1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a esquerda
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+
+                aplica_regras(i,j,*quadro,&vizinhos);
+            }else if (i == size_quadro-1)
+            {
+                //celula acima
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a direita
+                if (quadro[i+1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula a esquerda
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                aplica_regras(i,j,*quadro,&vizinhos);
+            }else if (j== size_quadro-1)
+            {
+                //celula a esquerda
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula acima
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula abaixo
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                aplica_regras(i,j,*quadro,&vizinhos);
+            }
+        }
+        
+    }
+    
+}
 void clear(){
     // funcao para limpar a tela para ambos sistemas operacionais.
     #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
