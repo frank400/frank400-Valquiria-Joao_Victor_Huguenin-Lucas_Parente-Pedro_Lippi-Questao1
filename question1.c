@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include <stdbool.h> 
 #define size_quadro 30
 
@@ -38,6 +39,8 @@ void print_matrix(int colunas,int linhas, struct Celula* quadro){
 }
 void delay(int number_of_seconds) 
 { 
+    sleep(number_of_seconds);
+}
 void update_cells(int linhas,int colunas, struct Celula* quadro){
     for (int i = 0; i < size_quadro; i++)
     {
@@ -54,19 +57,12 @@ void update_cells(int linhas,int colunas, struct Celula* quadro){
             quadro[i*colunas +j].is_going_to_be_alive=false;           
             
         }
-  
-    }
-  
-    // looping till required time is not achieved 
-    while (clock() < start_time + milli_seconds) 
-        ; 
-}
-void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
-    if (quadro[i*size_quadro+j].is_alive==true)
-    {
-        int y = 1+1;
+        
     }
     
+}
+void aplica_regras(int i,int j, struct Celula* quadro, int* vizinhos){
+
     if (*vizinhos<2 || *vizinhos > 3)
     {
         quadro[i*size_quadro+j].is_going_to_die=true;
@@ -324,7 +320,7 @@ int main()
         update_cells(size_quadro,size_quadro,*quadro);
         count_geracoes++;
 
-        delay(10);
+        //delay(1);
         //clear();
     } 
     
