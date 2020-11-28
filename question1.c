@@ -414,13 +414,13 @@ int main()
     int count_geracoes=0;
     while (count_geracoes<geracoes)
     {
+        
         print_matrix(size_quadro,size_quadro,*quadro);
         still_alive(size_quadro,size_quadro,quadro);
         update_cells(size_quadro,size_quadro,*quadro);
         count_geracoes++;
-
-        //delay(1);
-        //clear();
+        delay(1);
+        clear();
     } 
     
     
