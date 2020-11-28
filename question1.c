@@ -23,8 +23,10 @@ void fill_morto(int colunas,int linhas, struct Celula* quadro){
     
 }
 void print_matrix(int colunas,int linhas, struct Celula* quadro){
+    printf("X------------------------------X\n");
     for (int i = 0; i < colunas; i++)
     {
+        printf("|");
         for (int j = 0; j < linhas; j++)
         {
             if(quadro[i*colunas +j].is_alive==true) printf("O");
@@ -34,8 +36,9 @@ void print_matrix(int colunas,int linhas, struct Celula* quadro){
             }
             
         }
-        printf("\n");
+        printf("|\n");
     }
+    printf("X------------------------------X\n");
 }
 void delay(int number_of_seconds) 
 { 
