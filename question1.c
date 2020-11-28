@@ -79,45 +79,47 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
         for (int j = 0; j < size_quadro; j++)
         {   
             int vizinhos=0;
+
+            //celulas do miolo da matrix
             if (j+1<size_quadro && i+1<size_quadro && j-1>=0 && i-1>=0)
             {
                 //celula acima
-                if (quadro[i][j+1].is_alive==true)
+                if (quadro[i-1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
                 //celula na diagonal superior direita
-                if (quadro[i+1][j+1].is_alive==true)
-                {
-                    vizinhos++;
-                }
-                //celula na diagonal inferior esquerda
-                if (quadro[i-1][j-1].is_alive==true)
-                {
-                    vizinhos++;
-                }
-                //celula na diagonal inferior direita
-                if (quadro[i+1][j-1].is_alive==true)
-                {
-                    vizinhos++;
-                }
-                //celula na diagonal superior esquerda
                 if (quadro[i-1][j+1].is_alive==true)
                 {
                     vizinhos++;
                 }
-                // celula abaixo
-                if (quadro[i][j-1].is_alive==true)
+                //celula na diagonal inferior esquerda
+                if (quadro[i+1][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
-                //celula a direita
+                //celula na diagonal inferior direita
+                if (quadro[i+1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior esquerda
+                if (quadro[i-1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                // celula abaixo
                 if (quadro[i+1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
+                //celula a direita
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
                 //celula a esquerda
-                if (quadro[i-1][j].is_alive==true)
+                if (quadro[i][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
@@ -125,59 +127,84 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
                 aplica_regras(i,j,*quadro,&vizinhos);         
                 
             }
+            //celula na posição x=0 y =0
             if (i==0 && j ==0)
             {
                 // celula abaixo
-                if (quadro[i][j-1].is_alive==true)
-                {
-                    vizinhos++;
-                }
-                //celula a direita
                 if (quadro[i+1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
+                //celula a direita
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
                 //celula na diagonal inferior direita
-                if (quadro[i+1][j-1].is_alive==true)
+                if (quadro[i+1][j+1].is_alive==true)
                 {
                     vizinhos++;
                 }
                 
 
                 aplica_regras(i,j,*quadro,&vizinhos);
-            }else if (i == 0 && i!= size_quadro-1)
+            }
+            //celula na posição y=0, na linha superior da matrix
+            else if (i == 0 && i!= size_quadro-1)
             {
                 // celula abaixo
-                if (quadro[i][j-1].is_alive==true)
-                {
-                    vizinhos++;
-                }
-                //celula a direita
                 if (quadro[i+1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
+                //celula a direita
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
                 //celula a esquerda
-                if (quadro[i-1][j].is_alive==true)
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior direita
+                if (quadro[i+1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior esquerda
+                if (quadro[i+1][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
                 aplica_regras(i,j,*quadro,&vizinhos);
 
-            }else if (j==0 && j != size_quadro-1)
+            }
+            //Na linha mais a esquerda da matrix, x=0
+            else if (j==0 && j != size_quadro-1)
             {
                 //celula acima
-                if (quadro[i][j+1].is_alive==true)
+                if (quadro[i-1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
                 // celula abaixo
-                if (quadro[i][j-1].is_alive==true)
+                if (quadro[i+1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
                 //celula a direita
-                if (quadro[i+1][j].is_alive==true)
+                if (quadro[i][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior direita
+                if (quadro[i+1][j+1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior direita
+                if (quadro[i-1][j+1].is_alive==true)
                 {
                     vizinhos++;
                 }
@@ -185,20 +212,21 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
             }
             
             
+            // No extremo inferior direito da matrix
             if (i == size_quadro-1 && j ==size_quadro-1)
             {
                 //celula acima
-                if (quadro[i][j+1].is_alive==true)
+                if (quadro[i-1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
                 //celula na diagonal superior esquerda
-                if (quadro[i-1][j+1].is_alive==true)
+                if (quadro[i-1][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
                 //celula a esquerda
-                if (quadro[i-1][j].is_alive==true)
+                if (quadro[i][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
@@ -207,17 +235,27 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
             }else if (i == size_quadro-1)
             {
                 //celula acima
-                if (quadro[i][j+1].is_alive==true)
+                if (quadro[i-1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
-                //celula a direita
+                // celula abaixo
                 if (quadro[i+1][j].is_alive==true)
                 {
                     vizinhos++;
                 }
                 //celula a esquerda
-                if (quadro[i-1][j].is_alive==true)
+                if (quadro[i][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior esquerda
+                if (quadro[i-1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal inferior esquerda
+                if (quadro[i+1][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
@@ -225,17 +263,27 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
             }else if (j== size_quadro-1)
             {
                 //celula a esquerda
-                if (quadro[i-1][j].is_alive==true)
+                if (quadro[i][j-1].is_alive==true)
                 {
                     vizinhos++;
                 }
-                //celula acima
+                //celula a direita
                 if (quadro[i][j+1].is_alive==true)
                 {
                     vizinhos++;
                 }
-                //celula abaixo
-                if (quadro[i][j-1].is_alive==true)
+                //celula acima
+                if (quadro[i-1][j].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior esquerda
+                if (quadro[i-1][j-1].is_alive==true)
+                {
+                    vizinhos++;
+                }
+                //celula na diagonal superior direita
+                if (quadro[i-1][j+1].is_alive==true)
                 {
                     vizinhos++;
                 }
