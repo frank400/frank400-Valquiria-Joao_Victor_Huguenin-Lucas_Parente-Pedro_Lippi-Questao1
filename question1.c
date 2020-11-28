@@ -39,7 +39,15 @@ void print_matrix(int colunas,int linhas, struct Celula* quadro){
 }
 void delay(int number_of_seconds) 
 { 
-    sleep(number_of_seconds);
+    #if defined(_WIN32) || defined(_WIN64)
+        #include <windows.h>
+        Sleep(number_of_seconds*1000000);
+    #else
+        #include <unistd.h>
+        usleep(1000000*number_of_seconds);
+    #endif
+
+
 }
 void update_cells(int linhas,int colunas, struct Celula* quadro){
     for (int i = 0; i < size_quadro; i++)
