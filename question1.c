@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <unistd.h>
 #include <stdbool.h> 
 #define size_quadro 30
 
@@ -294,7 +293,7 @@ void still_alive(int linhas,int colunas, struct Celula quadro[][colunas]){
             {
                 // celula abaixo
                 if (quadro[i+1][j].is_alive==true)
-            {
+                {
                     vizinhos++;
                 }
                 //celula a esquerda
@@ -413,7 +412,7 @@ int main()
     }
     int count_geracoes=0;
     while (count_geracoes<geracoes)
-    {
+    {   
         
         print_matrix(size_quadro,size_quadro,*quadro);
         still_alive(size_quadro,size_quadro,quadro);
