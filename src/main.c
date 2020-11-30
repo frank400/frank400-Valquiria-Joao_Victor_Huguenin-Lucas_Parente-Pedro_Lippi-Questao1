@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
 #include "operacoes_matrix.h"
 #include "system_operations.h"
 

@@ -1,8 +1,4 @@
 #include "system_operations.h"
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 void delay(int number_of_seconds) {
 #if defined(_WIN32) || defined(_WIN64)

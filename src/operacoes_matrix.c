@@ -1,5 +1,3 @@
-#include <stdbool.h>
-#include <stdio.h>
 #include "operacoes_matrix.h"
 
 #define size_quadro 30

@@ -1,6 +1,9 @@
 #ifndef QUESTION1_OPERACOES_MATRIX_H
 #define QUESTION1_OPERACOES_MATRIX_H
 
+#include <stdbool.h>
+#include <stdio.h>
+
 #define size_quadro 30
 
 struct Celula{
