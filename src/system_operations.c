@@ -6,11 +6,12 @@
 
 void delay(int number_of_seconds) {
 #if defined(_WIN32) || defined(_WIN64)
-    #include <windows.h>
+#include <windows.h>
     Sleep(number_of_seconds*1000000);
 #else
 
 #include <unistd.h>
+
     usleep(1000000 * number_of_seconds);
 #endif
 }
