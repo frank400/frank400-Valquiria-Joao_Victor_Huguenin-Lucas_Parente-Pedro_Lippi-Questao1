@@ -9,6 +9,8 @@ int main() {
     printf("Digite quantas gerações quer ver:\n");
     int geracoes;
     scanf("%d", &geracoes);
+
+    srand((unsigned) time(0));
     if (opcao == 1) {
         fill_morto(size_quadro, size_quadro, *quadro);
 
