@@ -287,5 +287,16 @@ void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
             }
             count++;
         }
+        fill_morto(size_quadro, size_quadro, *quadro);
+
+        for (int i = 0; i < size_quadro; i++) {
+            for (int j = 0; j < size_quadro; j++) {
+                for (int cont = 0; cont < size_quadro; cont++) {
+                    if (x[cont] == i && y[cont] == j) {
+                        quadro[j][i].is_alive = true;
+                    }
+                }
+            }
+        }
     
 }
