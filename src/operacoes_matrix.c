@@ -258,10 +258,7 @@ void still_alive(int linhas, int colunas, struct Celula quadro[][colunas]) {
         }
     }
 }
-void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
-    
-    
-}
+
 
 void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
 	fill_morto(size_quadro, size_quadro, *quadro);
@@ -272,4 +269,13 @@ void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
         int y = rand() % size_quadro;
         quadro[x][y].is_alive = true;
     }
+}
+
+void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
+     int x[size_quadro], y[size_quadro];
+        for (int i = 0; i < size_quadro; i++) {
+            x[i] = -4;
+            y[i] = -4;
+        }
+    
 }
