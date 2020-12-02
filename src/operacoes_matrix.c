@@ -55,6 +55,7 @@ void aplica_regras(int i, int j, struct Celula *quadro, int *vizinhos) {
     }
     *vizinhos = 0;
 }
+
 void still_alive(int linhas, int colunas, struct Celula quadro[][colunas]) {
     for (int i = 0; i < size_quadro; i++) {
         for (int j = 0; j < size_quadro; j++) {
@@ -260,8 +261,8 @@ void still_alive(int linhas, int colunas, struct Celula quadro[][colunas]) {
 }
 
 
-void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
-	fill_morto(size_quadro, size_quadro, *quadro);
+void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]) {
+    fill_morto(size_quadro, size_quadro, *quadro);
 
     int number_of_cells = rand() % (size_quadro * size_quadro);
     for (int i = 0; i < number_of_cells; i++) {
@@ -271,33 +272,33 @@ void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
     }
 }
 
-void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
+void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]) {
     printf("Digite as coordenadas das celulas que estaram vivas no formato X Y\n");
-     int x[size_quadro], y[size_quadro];
-        for (int i = 0; i < size_quadro; i++) {
-            x[i] = -4;
-            y[i] = -4;
+    int x[size_quadro], y[size_quadro];
+    for (int i = 0; i < size_quadro; i++) {
+        x[i] = -4;
+        y[i] = -4;
+    }
+
+    int count = 0;
+
+    while (true) {
+        scanf("%d %d", &x[count], &y[count]);
+        if (x[count] == -1 && y[count] == -1) {
+            break;
         }
+        count++;
+    }
+    fill_morto(size_quadro, size_quadro, *quadro);
 
-        int count = 0;
-
-        while (true) {
-            scanf("%d %d", &x[count], &y[count]);
-            if (x[count] == -1 && y[count] == -1) {
-                break;
-            }
-            count++;
-        }
-        fill_morto(size_quadro, size_quadro, *quadro);
-
-        for (int i = 0; i < size_quadro; i++) {
-            for (int j = 0; j < size_quadro; j++) {
-                for (int cont = 0; cont < size_quadro; cont++) {
-                    if (x[cont] == i && y[cont] == j) {
-                        quadro[j][i].is_alive = true;
-                    }
+    for (int i = 0; i < size_quadro; i++) {
+        for (int j = 0; j < size_quadro; j++) {
+            for (int cont = 0; cont < size_quadro; cont++) {
+                if (x[cont] == i && y[cont] == j) {
+                    quadro[j][i].is_alive = true;
                 }
             }
         }
+    }
 
 }

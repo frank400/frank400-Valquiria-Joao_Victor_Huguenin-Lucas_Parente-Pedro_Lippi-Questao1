@@ -12,9 +12,9 @@ int main() {
 
     srand((unsigned) time(0));
     if (opcao == 1) {
-    	fill_quadro_random(quadro);
+        fill_quadro_random(quadro);
     } else {
-       inicializacao_celula_viva(quadro);
+        inicializacao_celula_viva(quadro);
     }
     int count_geracoes = 0;
     while (count_geracoes < geracoes) {
