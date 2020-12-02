@@ -258,3 +258,8 @@ void still_alive(int linhas, int colunas, struct Celula quadro[][colunas]) {
         }
     }
 }
+void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
+	fill_morto(size_quadro, size_quadro, *quadro);
+
+    int number_of_cells = rand() % (size_quadro * size_quadro);
+}
