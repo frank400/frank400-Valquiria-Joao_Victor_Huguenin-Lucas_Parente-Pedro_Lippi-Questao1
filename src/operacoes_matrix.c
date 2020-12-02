@@ -258,3 +258,8 @@ void still_alive(int linhas, int colunas, struct Celula quadro[][colunas]) {
         }
     }
 }
+void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
+    
+    
+}
+
