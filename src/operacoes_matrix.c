@@ -272,12 +272,13 @@ void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
 }
 
 void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
+    printf("Digite as coordenadas das celulas que estaram vivas no formato X Y\n");
      int x[size_quadro], y[size_quadro];
         for (int i = 0; i < size_quadro; i++) {
             x[i] = -4;
             y[i] = -4;
         }
-        
+
         int count = 0;
 
         while (true) {
@@ -298,5 +299,5 @@ void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
                 }
             }
         }
-    
+
 }
