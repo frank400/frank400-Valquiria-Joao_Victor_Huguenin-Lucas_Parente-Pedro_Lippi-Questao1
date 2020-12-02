@@ -277,5 +277,15 @@ void inicializacao_celula_viva(struct Celula quadro[size_quadro][size_quadro]){
             x[i] = -4;
             y[i] = -4;
         }
+        
+        int count = 0;
+
+        while (true) {
+            scanf("%d %d", &x[count], &y[count]);
+            if (x[count] == -1 && y[count] == -1) {
+                break;
+            }
+            count++;
+        }
     
 }
