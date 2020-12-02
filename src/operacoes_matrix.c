@@ -262,4 +262,9 @@ void fill_quadro_random(struct Celula quadro[size_quadro][size_quadro]){
 	fill_morto(size_quadro, size_quadro, *quadro);
 
     int number_of_cells = rand() % (size_quadro * size_quadro);
+    for (int i = 0; i < number_of_cells; i++) {
+        int x = rand() % size_quadro;
+        int y = rand() % size_quadro;
+        quadro[x][y].is_alive = true;
+    }
 }
