@@ -21,33 +21,7 @@ int main() {
             quadro[x][y].is_alive = true;
         }
     } else {
-        int x[size_quadro], y[size_quadro];
-        for (int i = 0; i < size_quadro; i++) {
-            x[i] = -4;
-            y[i] = -4;
-        }
-
-        int count = 0;
-
-        while (true) {
-            scanf("%d %d", &x[count], &y[count]);
-            if (x[count] == -1 && y[count] == -1) {
-                break;
-            }
-            count++;
-        }
-
-        fill_morto(size_quadro, size_quadro, *quadro);
-
-        for (int i = 0; i < size_quadro; i++) {
-            for (int j = 0; j < size_quadro; j++) {
-                for (int cont = 0; cont < size_quadro; cont++) {
-                    if (x[cont] == i && y[cont] == j) {
-                        quadro[j][i].is_alive = true;
-                    }
-                }
-            }
-        }
+       inicializacao_celula_viva(quadro);
     }
     int count_geracoes = 0;
     while (count_geracoes < geracoes) {
